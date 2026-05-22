@@ -1,0 +1,83 @@
+﻿.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: #1C1C1C;
+    overflow: hidden;
+}
+
+.logo-section {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.souza {
+    color: #B1B3B3;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+.okawa {
+    color: #C8102E;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 4px;
+}
+
+.subtitle {
+    color: #FFFFFF;
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.logo-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #C8102E, #A50D24);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 8px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.menu-separator {
+    color: #75787B;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 16px 12px 8px 12px;
+}
+
+.collapsed .nav-menu {
+    align-items: center;
+    padding: 12px 0;
+}
+
+.collapsed .logo-section {
+    justify-content: center;
+    padding: 16px 0;
+}
+
+.collapsed .subtitle,
+.collapsed .menu-separator {
+    display: none;
+}

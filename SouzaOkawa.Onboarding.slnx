@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SouzaOkawa.Onboarding.Application/SouzaOkawa.Onboarding.Application.csproj" />
+    <Project Path="src/SouzaOkawa.Onboarding.Domain/SouzaOkawa.Onboarding.Domain.csproj" />
+    <Project Path="src/SouzaOkawa.Onboarding.Infrastructure/SouzaOkawa.Onboarding.Infrastructure.csproj" />
+    <Project Path="src/SouzaOkawa.Onboarding.Presentation/SouzaOkawa.Onboarding.Presentation.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SouzaOkawa.Onboarding.UnitTests/SouzaOkawa.Onboarding.UnitTests.csproj" />
+  </Folder>
+</Solution>

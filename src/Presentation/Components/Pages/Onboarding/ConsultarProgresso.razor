@@ -1,0 +1,228 @@
+﻿@page "/onboarding/progresso"
+@rendermode InteractiveServer
+@using MediatR
+@using Application.Modules.Queries.ObterProgresso
+@using Application.Modules.Commands.ConcluirModulo
+@using Application.Modules.Queries.ObterConquistas
+@inject IMediator Mediator
+@inject NavigationManager Navigation
+
+<PageTitle>Progresso do Onboarding</PageTitle>
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Progresso do Onboarding</h4>
+            <a href="/onboarding/iniciar" class="btn btn-light btn-sm">Iniciar Novo</a>
+        </div>
+        <div class="card-body">
+            @if (!string.IsNullOrEmpty(Erro))
+            {
+                <div class="alert alert-danger">@Erro</div>
+            }
+
+            @* Busca por profissional *@
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <label class="form-label">ID do Profissional</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" @bind="ProfissionalIdTexto"
+                               placeholder="00000000-0000-0000-0000-000000000000"
+                               @onkeydown="HandleKeyDown" />
+                        <button class="btn btn-primary" @onclick="BuscarProgresso" disabled="@Carregando">
+                            @(Carregando ? "Buscando..." : "Buscar")
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            @if (Progresso is not null)
+            {
+                <hr />
+
+                @* Card de resumo *@
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card text-center border-primary">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">@Progresso.PercentualConclusao%</h5>
+                                <p class="card-text">Concluído</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center border-success">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">@Progresso.ModulosConcluidos / @Progresso.TotalModulos</h5>
+                                <p class="card-text">Módulos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center border-info">
+                            <div class="card-body">
+                                <h5 class="card-title text-info">@Progresso.Conquistas.Count(c => c.Desbloqueada)</h5>
+                                <p class="card-text">Conquistas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* Barra de progresso *@
+                <div class="progress mb-4" style="height: 25px;">
+                    <div class="progress-bar" role="progressbar"
+                         style="width: @Progresso.PercentualConclusao%"
+                         aria-valuenow="@Progresso.PercentualConclusao" aria-valuemin="0" aria-valuemax="100">
+                        @Progresso.PercentualConclusao%
+                    </div>
+                </div>
+
+                @* Módulos *@
+                <h5>Módulos</h5>
+                <div class="list-group mb-4">
+                    @foreach (var modulo in Progresso.Modulos.OrderBy(m => m.Ordem))
+                    {
+                        <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>@modulo.Nome</strong>
+                                <br />
+                                <small class="text-muted">@modulo.Descricao</small>
+                                <br />
+                                @if (modulo.DataConclusao.HasValue)
+                                {
+                                    <small class="text-success">
+                                        Concluído em @modulo.DataConclusao.Value.ToString("dd/MM/yyyy")
+                                    </small>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">@modulo.Status</span>
+                                }
+                            </div>
+                            @if (modulo.Status == "Pendente" || modulo.Status == "EmAndamento")
+                            {
+                                <button class="btn btn-success btn-sm"
+                                        @onclick="() => ConcluirModulo(modulo.Id)"
+                                        disabled="@Carregando">
+                                    Concluir
+                                </button>
+                            }
+                            else if (modulo.Status == "Concluido")
+                            {
+                                <span class="badge bg-success">Concluído</span>
+                            }
+                        </div>
+                    }
+                </div>
+
+                @* Conquistas *@
+                @if (Progresso.Conquistas.Any())
+                {
+                    <h5>Conquistas</h5>
+                    <div class="row mb-4">
+                        @foreach (var conquista in Progresso.Conquistas.OrderBy(c => c.Ordem))
+                        {
+                            <div class="col-md-3 mb-2">
+                                <div class="card @(conquista.Desbloqueada ? "border-success" : "border-secondary opacity-50")">
+                                    <div class="card-body text-center">
+                                        <div style="font-size: 2rem;">@conquista.Icone</div>
+                                        <h6 class="card-title mt-2">@conquista.Nome</h6>
+                                        <small class="text-muted">@conquista.Descricao</small>
+                                        @if (conquista.Desbloqueada)
+                                        {
+                                            <div><span class="badge bg-success mt-1">Desbloqueada</span></div>
+                                        }
+                                        else
+                                        {
+                                            <div><span class="badge bg-secondary mt-1">Bloqueada</span></div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string ProfissionalIdTexto = string.Empty;
+    private string? Erro;
+    private bool Carregando;
+    private ProgressoDto? Progresso;
+
+    private async Task HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+            await BuscarProgresso();
+    }
+
+    private async Task BuscarProgresso()
+    {
+        Erro = null;
+        Progresso = null;
+        Carregando = true;
+
+        try
+        {
+            if (!Guid.TryParse(ProfissionalIdTexto, out var profissionalId))
+            {
+                Erro = "ID do profissional inválido. Informe um GUID válido.";
+                return;
+            }
+
+            var query = new ObterProgressoQuery(profissionalId);
+            var result = await Mediator.Send(query);
+
+            if (result.IsSuccess)
+            {
+                Progresso = result.Value;
+            }
+            else
+            {
+                Erro = result.Error;
+            }
+        }
+        catch (Exception ex)
+        {
+            Erro = $"Erro ao buscar progresso: {ex.Message}";
+        }
+        finally
+        {
+            Carregando = false;
+        }
+    }
+
+    private async Task ConcluirModulo(Guid moduloId)
+    {
+        Carregando = true;
+
+        try
+        {
+            if (!Guid.TryParse(ProfissionalIdTexto, out var profissionalId))
+                return;
+
+            var command = new ConcluirModuloCommand(profissionalId, moduloId);
+            var result = await Mediator.Send(command);
+
+            if (result.IsSuccess)
+            {
+                Progresso = result.Value;
+            }
+            else
+            {
+                Erro = result.Error;
+            }
+        }
+        catch (Exception ex)
+        {
+            Erro = $"Erro ao concluir módulo: {ex.Message}";
+        }
+        finally
+        {
+            Carregando = false;
+        }
+    }
+}

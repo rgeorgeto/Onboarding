@@ -1,0 +1,45 @@
+﻿@inherits LayoutComponentBase
+@using MudBlazor
+@using Application.Services
+@implements IDisposable
+@inject LayoutStateService LayoutState
+
+<div class="layout-shell">
+    <div class="sidebar-wrapper @(LayoutState.IsSidebarOpen ? "expanded" : "collapsed")">
+        <Sidebar />
+    </div>
+    <div class="main-wrapper">
+        <div class="topbar-wrapper">
+            <button class="toggle-btn" @onclick="LayoutState.Toggle" title="Alternar sidebar">
+                <MudIcon Icon="@Icons.Material.Filled.Menu" Size="Size.Medium" />
+            </button>
+            <span class="brand-top">SouzaOkawa <span class="brand-divider">|</span> Onboarding</span>
+            <small class="brand-motto">Simplicidade. Excelência. Empatia.</small>
+        </div>
+        <div class="body-wrapper">
+            <div class="body-content">
+                @Body
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">X</span>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        LayoutState.OnChange += HandleStateChanged;
+    }
+
+    private void HandleStateChanged() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        LayoutState.OnChange -= HandleStateChanged;
+    }
+}

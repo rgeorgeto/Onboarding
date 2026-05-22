@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using MudBlazor
+@using Application.Services
+@implements IDisposable
+@inject LayoutStateService LayoutState
+
+<div class="sidebar-container @(LayoutState.IsSidebarOpen ? "expanded" : "collapsed")">
+    <div class="logo-section">
+        @if (LayoutState.IsSidebarOpen)
+        {
+            <div class="logo-full">
+                <div class="logo-main">
+                    <span class="souza">SOUZA</span><span class="okawa">OKAWA</span>
+                </div>
+                <span class="subtitle">Onboarding</span>
+            </div>
+        }
+        else
+        {
+            <div class="logo-mini">SO</div>
+        }
+    </div>
+
+    <nav class="nav-menu">
+        <div class="menu-separator">@(LayoutState.IsSidebarOpen ? "GERAL" : "")</div>
+        <SidebarItem Icon="@Icons.Material.Outlined.Home"
+                     Label="Home" Href="" Match="NavLinkMatch.All" />
+        <div class="menu-separator">@(LayoutState.IsSidebarOpen ? "ONBOARDING" : "")</div>
+        <SidebarItem Icon="@Icons.Material.Outlined.AddCircleOutline"
+                     Label="Iniciar Onboarding" Href="onboarding/iniciar" />
+        <SidebarItem Icon="@Icons.Material.Outlined.Assignment"
+                     Label="Progresso" Href="onboarding/progresso" />
+    </nav>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        LayoutState.OnChange += HandleStateChanged;
+    }
+
+    private void HandleStateChanged() => InvokeAsync(StateHasChanged);
+
+    public void Dispose()
+    {
+        LayoutState.OnChange -= HandleStateChanged;
+    }
+}
