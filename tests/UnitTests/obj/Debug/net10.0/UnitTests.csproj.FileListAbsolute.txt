@@ -156,6 +156,7 @@ C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.GeneratedMSBu
 C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.AssemblyInfoInputs.cache
 C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.AssemblyInfo.cs
 C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.csproj.CoreCompileInputs.cache
+C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.sourcelink.json
 C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.csproj.Up2Date
 C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\UnitTests.dll
 C:\Projetos\Onboarding\tests\UnitTests\obj\Debug\net10.0\refint\UnitTests.dll

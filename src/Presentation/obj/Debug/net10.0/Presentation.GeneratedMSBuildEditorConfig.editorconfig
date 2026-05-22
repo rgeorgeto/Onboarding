@@ -38,6 +38,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projetos/Onboarding/src/Presentation/Components/Pages/Conclusao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb25jbHVzYW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/Onboarding/src/Presentation/Components/Pages/ConsultarProgresso.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb25zdWx0YXJQcm9ncmVzc28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/Onboarding/src/Presentation/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,16 +58,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projetos/Onboarding/src/Presentation/Components/Pages/IniciarOnboarding.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmljaWFyT25ib2FyZGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/Onboarding/src/Presentation/Components/Pages/Jornada.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xKb3JuYWRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/Onboarding/src/Presentation/Components/Pages/Modulo.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNb2R1bG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/Onboarding/src/Presentation/Components/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projetos/Onboarding/src/Presentation/Components/Pages/Onboarding/ConsultarProgresso.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xPbmJvYXJkaW5nXENvbnN1bHRhclByb2dyZXNzby5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Projetos/Onboarding/src/Presentation/Components/Pages/Onboarding/IniciarOnboarding.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xPbmJvYXJkaW5nXEluaWNpYXJPbmJvYXJkaW5nLnJhem9y
+[C:/Projetos/Onboarding/src/Presentation/Components/Pages/Progresso.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcm9ncmVzc28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projetos/Onboarding/src/Presentation/Components/Pages/Weather.razor]

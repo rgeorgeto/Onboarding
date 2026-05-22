@@ -1,0 +1,48 @@
+@page "/modulo"
+
+<div class="container mt-4">
+    <h1 class="display-4">Cultura e Jeito SouzaOkawa</h1>
+    <p class="lead">Seja bem-vindo! Este módulo vai te ajudar a conhecer nossa cultura, como trabalhamos e o que esperamos de você.</p>
+
+    <h2>Nossa Cultura</h2>
+    <p>Somos uma empresa que valoriza a colaboração, o respeito e a inovação. Acreditamos que cada colaborador é essencial para o nosso crescimento.</p>
+
+    <h2>Como Trabalhamos</h2>
+    <p>Trabalhamos de forma ágil, com times multidisciplinares e foco em entregas contínuas. A transparência e a comunicação são a base do nosso dia a dia.</p>
+
+    <h2>O Que Esperamos de Você</h2>
+    <p>Esperamos proatividade, vontade de aprender e colaboração com o time. Aqui, todos têm voz e podem contribuir para o sucesso coletivo.</p>
+
+    <h3>Checklist de Boas-Vindas</h3>
+    <ul class="list-group">
+        <li class="list-group-item"><input type="checkbox" class="form-check-input me-2" id="check1" /><label for="check1">Leia o manual do colaborador</label></li>
+        <li class="list-group-item"><input type="checkbox" class="form-check-input me-2" id="check2" /><label for="check2">Configure seu ambiente de trabalho</label></li>
+        <li class="list-group-item"><input type="checkbox" class="form-check-input me-2" id="check3" /><label for="check3">Agende um café com seu mentor</label></li>
+    </ul>
+
+    <h3>Quiz: O que você aprendeu?</h3>
+    <p><strong>Qual é um dos nossos valores?</strong></p>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="quiz" id="q1" value="competicao">
+        <label class="form-check-label" for="q1">Competição</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="quiz" id="q2" value="colaboracao">
+        <label class="form-check-label" for="q2">Colaboração</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="quiz" id="q3" value="individualismo">
+        <label class="form-check-label" for="q3">Individualismo</label>
+    </div>
+
+    <button class="btn btn-primary mt-3">Concluir módulo</button>
+
+    <nav class="mt-4">
+        <a href="/jornada" class="me-2">Jornada</a> |
+        <a href="/progresso" class="ms-2">Progresso</a>
+    </nav>
+</div>
+
+@code {
+    // Nenhuma lógica complexa necessária
+}

@@ -1,0 +1,126 @@
+@page "/progresso"
+
+<h3 class="mb-4">Meu Progresso</h3>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Progresso Geral</h5>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: @(OverallProgress)%" aria-valuenow="@OverallProgress" aria-valuemin="0" aria-valuemax="100">@OverallProgress%</div>
+        </div>
+        <p class="mt-2 text-muted">@CompletedModules de @TotalModules módulos concluídos</p>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Resumo dos Módulos</h5>
+        <div class="row text-center">
+            <div class="col-4">
+                <div class="bg-success text-white p-3 rounded">
+                    <h3>@CompletedModules</h3>
+                    <small>Concluídos</small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="bg-warning text-dark p-3 rounded">
+                    <h3>@InProgressModules</h3>
+                    <small>Em Andamento</small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="bg-secondary text-white p-3 rounded">
+                    <h3>@NotStartedModules</h3>
+                    <small>Não Iniciados</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Módulos</h5>
+        <div class="list-group">
+            @foreach (var module in Modules)
+            {
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6 class="mb-1">@module.Name</h6>
+                        <small>@module.Status</small>
+                    </div>
+                    <div class="progress mt-2" style="height: 8px;">
+                        <div class="progress-bar" role="progressbar" style="width: @module.Percent%" aria-valuenow="@module.Percent" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small class="text-muted">@module.Percent% concluído</small>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Conquistas Recentes</h5>
+        <ul class="list-unstyled">
+            @foreach (var achievement in RecentAchievements)
+            {
+                <li>@achievement</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Próximas Etapas</h5>
+        <ul class="list-unstyled">
+            @foreach (var step in NextSteps)
+            {
+                <li>@step</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="mb-4">
+    <a href="/" class="btn btn-primary me-2">Home</a>
+    <a href="/jornada" class="btn btn-outline-primary">Jornada</a>
+</div>
+
+@code {
+    private class Module
+    {
+        public string Name { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
+        public int Percent { get; set; }
+    }
+
+    private int OverallProgress { get; set; } = 35;
+    private int TotalModules { get; set; } = 4;
+    private int CompletedModules { get; set; } = 1;
+    private int InProgressModules { get; set; } = 2;
+    private int NotStartedModules { get; set; } = 1;
+
+    private List<Module> Modules { get; set; } = new()
+    {
+        new Module { Name = "Cultura e Jeito SouzaOkawa", Status = "Concluído", Percent = 100 },
+        new Module { Name = "Pessoas e Áreas", Status = "Em andamento", Percent = 70 },
+        new Module { Name = "Ferramentas do Dia a Dia", Status = "Em andamento", Percent = 40 },
+        new Module { Name = "Primeiros Passos", Status = "Não iniciado", Percent = 0 }
+    };
+
+    private List<string> RecentAchievements { get; set; } = new()
+    {
+        "Concluiu o módulo 'Cultura e Jeito SouzaOkawa'",
+        "Completou o tutorial de boas-vindas",
+        "Adicionou foto ao perfil"
+    };
+
+    private List<string> NextSteps { get; set; } = new()
+    {
+        "Finalizar módulo 'Pessoas e Áreas'",
+        "Iniciar módulo 'Ferramentas do Dia a Dia'",
+        "Agendar reunião com o mentor"
+    };
+}

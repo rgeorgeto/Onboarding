@@ -35,13 +35,9 @@ html, body {
     overflow: hidden;
 }
 
-.sidebar-wrapper.expanded {
-    width: 240px;
-}
+.sidebar-wrapper.expanded { width: 240px; }
 
-.sidebar-wrapper.collapsed {
-    width: 60px;
-}
+.sidebar-wrapper.collapsed { width: 60px; }
 
 /* ===== SIDEBAR CONTAINER (preenche o wrapper) ===== */
 .sidebar-container {

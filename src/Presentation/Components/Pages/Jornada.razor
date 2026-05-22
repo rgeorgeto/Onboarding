@@ -1,0 +1,48 @@
+@page "/jornada"
+
+@using Microsoft.AspNetCore.Components
+
+<h3 class="text-center my-4">Minha Jornada</h3>
+
+@* Progresso geral mockado *@
+<div class="progress mb-4" style="height: 25px;">
+    <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+</div>
+
+@* Etapa recomendada agora *@
+<div class="alert alert-info text-center" role="alert">
+    <strong>Etapa recomendada agora:</strong> Cultura e Jeito SouzaOkawa
+</div>
+
+@* Lista de módulos *@
+<div class="list-group">
+    @foreach (var modulo in modulos)
+    {
+        <div class="list-group-item">
+            <h5>@modulo.Titulo</h5>
+            <p>@modulo.Descricao</p>
+        </div>
+    }
+</div>
+
+@* Navegação *@
+<div class="mt-4 text-center">
+    <a href="/" class="btn btn-secondary me-2">Início</a>
+    <a href="/progresso" class="btn btn-primary">Progresso</a>
+</div>
+
+@code {
+    private class Modulo
+    {
+        public string Titulo { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
+    }
+
+    private List<Modulo> modulos = new()
+    {
+        new Modulo { Titulo = "Cultura e Jeito SouzaOkawa", Descricao = "Entenda os valores e a cultura da empresa." },
+        new Modulo { Titulo = "Pessoas e Áreas", Descricao = "Conheça as pessoas e as áreas da organização." },
+        new Modulo { Titulo = "Ferramentas do Dia a Dia", Descricao = "Aprenda a usar as ferramentas essenciais." },
+        new Modulo { Titulo = "Primeiros Passos", Descricao = "Dê os primeiros passos na sua jornada." }
+    };
+}

@@ -23,13 +23,14 @@
 
     <nav class="nav-menu">
         <div class="menu-separator">@(LayoutState.IsSidebarOpen ? "GERAL" : "")</div>
-        <SidebarItem Icon="@Icons.Material.Outlined.Home"
-                     Label="Home" Href="" Match="NavLinkMatch.All" />
+        <SidebarItem Icon="@Icons.Material.Outlined.Home" Label="Home" Href="" Match="NavLinkMatch.All" />
+
         <div class="menu-separator">@(LayoutState.IsSidebarOpen ? "ONBOARDING" : "")</div>
-        <SidebarItem Icon="@Icons.Material.Outlined.AddCircleOutline"
-                     Label="Iniciar Onboarding" Href="onboarding/iniciar" />
-        <SidebarItem Icon="@Icons.Material.Outlined.Assignment"
-                     Label="Progresso" Href="onboarding/progresso" />
+        <SidebarItem Icon="@Icons.Material.Outlined.AddCircleOutline" Label="Iniciar Onboarding" Href="iniciar-onboarding" />
+        <SidebarItem Icon="@Icons.Material.Outlined.Assignment" Label="Progresso" Href="progresso" />
+        <SidebarItem Icon="@Icons.Material.Outlined.Map" Label="Jornada" Href="jornada" />
+        <SidebarItem Icon="@Icons.Material.Outlined.MenuBook" Label="Módulo" Href="modulo" />
+        <SidebarItem Icon="@Icons.Material.Outlined.EmojiEvents" Label="Conclusão" Href="conclusao" />
     </nav>
 </div>
 

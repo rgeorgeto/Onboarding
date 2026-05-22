@@ -8,6 +8,7 @@ C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Application.GeneratedMS
 C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Application.AssemblyInfoInputs.cache
 C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Application.AssemblyInfo.cs
 C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Application.csproj.CoreCompileInputs.cache
+C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Application.sourcelink.json
 C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Applicat.44B5EDA2.Up2Date
 C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\Application.dll
 C:\Projetos\Onboarding\src\Application\obj\Debug\net10.0\refint\Application.dll
